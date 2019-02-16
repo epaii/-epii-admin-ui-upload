@@ -41,7 +41,7 @@ class LocalFileUploader implements IUploader
             }
 
             $dir = rtrim($dir, DIRECTORY_SEPARATOR);
-            $url_pre = rtrim($url_pre, "/");
+            $url_pre = rtrim($url_pre, "/")."/";
 
             if (!$dir) {
                 $ret->error("请设置uploadDir,EpiiUploader::setUploadDir()");
