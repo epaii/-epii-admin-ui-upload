@@ -10,6 +10,6 @@ namespace epii\ui\upload\driver;
 
 interface IUploader
 {
-    public function handlePostFiles(array $allowedExts=["gif", "jpeg", "jpg", "png"],$file_size=204800,$dir=null):UploaderResult;
+    public function handlePostFiles(array $allowedExts=["gif", "jpeg", "jpg", "png"],$file_size=204800,$dir=null,$url_pre = null):UploaderResult;
     public function del(array $data):bool ;
 }

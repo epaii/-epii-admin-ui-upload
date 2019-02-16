@@ -51,10 +51,10 @@ class AdminUiUpload
 
     }
 
-    public static function doUpload(): string
+    public static function doUpload(array $allowedExts = ["gif", "jpeg", "jpg", "png"], $file_size = 204800, $dir = null, $url_pre = null): string
     {
         // die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
-        return json_encode(self::getUploadHandler()->handlePostFiles()->getResult(), true);
+        return json_encode(self::getUploadHandler()->handlePostFiles( $allowedExts , $file_size , $dir , $url_pre )->getResult(), true);
 
 
     }
