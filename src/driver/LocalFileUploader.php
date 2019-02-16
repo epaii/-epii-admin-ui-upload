@@ -84,7 +84,7 @@ class LocalFileUploader implements IUploader
                             // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
                             move_uploaded_file($file["tmp_name"], $to_file_name);
                             $paths[] = $short_file_url = $short_dir . DIRECTORY_SEPARATOR . $short_file;
-                            $url[] = $url_pre . $short_file_url;
+                            $url[] = str_replace("\\","/",$url_pre . $short_file_url);
 
 
                         }
@@ -97,6 +97,8 @@ class LocalFileUploader implements IUploader
             }
             if (count($paths) > 0) {
                 $ret->success(implode(",", $paths), implode(",", $url));
+            }else{
+                $ret->error("格式或大小不符合");
             }
 
 
