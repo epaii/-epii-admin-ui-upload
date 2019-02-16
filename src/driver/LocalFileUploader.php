@@ -69,7 +69,7 @@ class LocalFileUploader implements IUploader
                 $temp = explode(".", $file["name"]);
 
                 $extension = end($temp);     // 获取文件后缀名
-                if (($file["size"] < $file_size) && in_array($extension, $allowedExts)) {
+                if (($file["size"] < $file_size) && in_array(strtolower($extension), $allowedExts)) {
                     if ($file["error"] > 0) {
 
                         $ret->error($file["error"]);
