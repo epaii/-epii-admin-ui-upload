@@ -32,12 +32,20 @@ class LocalFileUploader implements IUploader
 
         } else {
 
-
             if (!$dir) {
                 $dir = self::$dir;
             }
+            if (!$dir)
+            {
+                $dir = pathinfo($_SERVER["SCRIPT_FILENAME"], PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . "upload";
+            }
+
             if (!$url_pre) {
                 $url_pre = self::$url_pre;
+            }
+            if (!$url_pre)
+            {
+                $url_pre = "upload";
             }
 
             $dir = rtrim($dir, DIRECTORY_SEPARATOR);
