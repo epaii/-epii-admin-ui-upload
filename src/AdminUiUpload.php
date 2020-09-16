@@ -59,13 +59,11 @@ class AdminUiUpload
 
     }
 
+
     public static function delFile(array $data): string
     {
-        // die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
-        // TODO: Implement del() method.
+ 
         $ret = new UploaderResult();
-
-
         $out = self::getUploadHandler()->del($data);
         if ($out) {
             $ret->success("","");
@@ -73,9 +71,23 @@ class AdminUiUpload
             $ret->error("");
         }
         return json_encode($ret->getResult(), true);
-
-
     }
-
+    public static function do_upload(array $allowedExts = ["gif", "jpeg", "jpg", "png"], $file_size = 204800, $dir = null, $url_pre = null): UploaderResult
+    {
+        return self::getUploadHandler()->handlePostFiles( $allowedExts , $file_size , $dir , $url_pre )->getResult();
+    }
+    public static function del_file(array $data): UploaderResult
+    {
+ 
+        $ret = new UploaderResult();
+        $out = self::getUploadHandler()->del($data);
+        if ($out) {
+            $ret->success("","");
+        } else {
+            $ret->error("");
+        }
+        return $ret;
+    }
+    
 
 }
