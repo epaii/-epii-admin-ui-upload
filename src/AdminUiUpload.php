@@ -26,11 +26,11 @@ class AdminUiUpload
 
     }
 
-    public static function enablePhone($ws, $url_pre)
+    public static function enablePhone($ws)
     {
 
         EpiiAdminUi::addPluginData("epii_upload_phone", json_encode([
-            "file_pre" => $url_pre,
+            
             "ws" => $ws,
             "client_url" => Tools::get_web_root() . "/?app=epii_phone_upload@index&",
             "server_name" => "epii_upload_server_"

@@ -1,5 +1,8 @@
  <input type="text" id="files" name="files" style="display: none;">
- <div id="imgs" data-upload-preview="1" data-enable-phone=0 data-mimetype="image/jpg,<?php echo $file_types; ?>" data-maxsize="20480000" data-input-id="files">
+ <input type="text" id="urls" name="urls" style="display: none;">
+
+
+ <div id="imgs" data-upload-preview="1"  data-url-input-id="urls"  data-enable-phone=0 data-mimetype="image/jpg,<?php echo $file_types; ?>" data-maxsize="20480000" data-input-id="files">
  </div>
  <div class="baozhu" style="position: fixed;left:5%;bottom:30px;width:90%"><button id="tongbubtn" class="btn btn-success" style="width:100%;margin:auto auto">同步</button></div>
 
@@ -39,7 +42,8 @@
                      return
                  }
                  client.callServer(phone_config.server_name + Args.get("server_id"), "onfile", {
-                     files: document.getElementById("files").value
+                     files: document.getElementById("files").value,
+                     urls:document.getElementById("urls").value,
                  }, function(ret) {
                      alert('传递成功，若一体机提交后请重新扫描上传');
                      window.location.href = window.location.href;
