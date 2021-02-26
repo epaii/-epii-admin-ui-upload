@@ -82,7 +82,7 @@ class AdminUiUpload
         }
         return json_encode($ret->getResult(), true);
     }
-    public static function do_upload(array $allowedExts = ["gif", "jpeg", "jpg", "png"], $file_size = 204800, $dir = null, $url_pre = null): UploaderResult
+    public static function do_upload(array $allowedExts = ["gif", "jpeg", "jpg", "png"], $file_size = 204800, $dir = null, $url_pre = null)
     {
         return self::getUploadHandler()->handlePostFiles( $allowedExts , $file_size , $dir , $url_pre )->getResult();
     }
